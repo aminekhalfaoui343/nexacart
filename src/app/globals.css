@@ -1,0 +1,83 @@
+
+@import "tailwindcss";
+
+/* ========================================
+   1. NexaCart Brand Variables
+======================================== */
+
+:root {
+  --background: #f7f7fc;
+  --foreground: #171725;
+
+  --brand-purple: #6c4cf1;
+  --brand-blue: #2878f0;
+  --brand-pink: #f04d9a;
+  --brand-orange: #ff9d36;
+
+  --white: #ffffff;
+  --muted: #77778b;
+  --border: #e9e9f1;
+}
+
+/* ========================================
+   2. Tailwind CSS 4 Theme
+======================================== */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-orange: var(--brand-orange);
+
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-plus-jakarta);
+}
+
+/* ========================================
+   3. Global Styles
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-plus-jakarta), sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
