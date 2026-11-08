@@ -1,6 +1,11 @@
 
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
+import Header from "@/components/layout/Header";
+import MainNavigation from "@/components/layout/MainNavigation";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -32,8 +37,12 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${plusJakarta.variable} antialiased`}
     >
-      <body className="min-h-screen flex flex-col">
-        {children}
+      <body className="flex min-h-screen flex-col">
+        <AnnouncementBar />
+        <Header />
+        <MainNavigation />
+
+        <main className="flex-1">{children}</main>
       </body>
     </html>
   );
