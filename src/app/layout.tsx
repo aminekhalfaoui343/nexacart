@@ -1,10 +1,7 @@
-
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
-import AnnouncementBar from "@/components/layout/AnnouncementBar";
-import Header from "@/components/layout/Header";
-import MainNavigation from "@/components/layout/MainNavigation";
+import ScrollAwareHeader from "@/components/layout/ScrollAwareHeader";
 
 import "./globals.css";
 
@@ -38,9 +35,7 @@ export default function RootLayout({
       className={`${inter.variable} ${plusJakarta.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col">
-        <AnnouncementBar />
-        <Header />
-        <MainNavigation />
+        <ScrollAwareHeader />
 
         <main className="flex-1">{children}</main>
       </body>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 
@@ -51,17 +52,14 @@ export default function HeroSection() {
         <div className="relative z-10 flex min-h-[260px] items-center justify-center">
           <div className="absolute h-64 w-64 rounded-full bg-white/15 blur-2xl" />
 
-          <div className="relative flex h-64 w-full max-w-md items-center justify-center rounded-3xl border border-white/20 bg-white/10 backdrop-blur-sm">
-            <div className="text-center">
-              <Sparkles className="mx-auto mb-3 text-white/80" size={44} />
-              <p className="text-sm font-semibold text-white/90">
-                Your Hero Product Image
-              </p>
-              <p className="mt-1 text-xs text-white/70">
-                Replace with your Figma asset
-              </p>
-            </div>
-          </div>
+          <Image
+            src="/images/macbook.jpg"
+            alt="Featured NexaCart electronics"
+            width={650}
+            height={500}
+            priority
+            className="relative h-auto w-full max-w-[550px] object-contain drop-shadow-2xl rounded-2xl"
+          />
         </div>
       </div>
     </section>
