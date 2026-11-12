@@ -53,7 +53,7 @@ export default function HeroSection() {
           <div className="absolute h-64 w-64 rounded-full bg-white/15 blur-2xl" />
 
           <Image
-            src="/images/macbook.jpg"
+            src="/images/branding-image.jpg"
             alt="Featured NexaCart electronics"
             width={650}
             height={500}
