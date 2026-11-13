@@ -30,12 +30,9 @@ export default function Header() {
     <header className="border-b border-[#E9E9F1] bg-white">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-4 px-6 py-5 lg:flex-row lg:gap-8">
         {/* Brand */}
-        <Link
-          href="/"
-          className="shrink-0 text-2xl font-extrabold tracking-tight text-[#171725]"
-        >
-          Nexa<span className="text-[#6C4CF1]">Cart</span>
-          <span className="text-[#FF9D36]">.</span>
+        <Link href="/" className="text-2xl font-extrabold tracking-tight">
+          <span className="text-[#6C4CF1]">Nexa</span>
+          <span className="text-[#F04D9A]">Cart</span>
         </Link>
 
         {/* Search */}

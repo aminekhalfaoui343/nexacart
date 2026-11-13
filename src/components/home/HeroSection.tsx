@@ -12,10 +12,9 @@ export default function HeroSection() {
 
         {/* Text content */}
         <div className="relative z-10 max-w-xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-            <Sparkles size={16} />
-            <span>Discover the Future of Tech</span>
-          </div>
+          <span className="inline-flex items-center rounded-full bg-[#FF9D36] px-4 py-2 text-xs font-semibold text-[#171725]">
+            New arrival
+          </span>
 
           <h1 className="font-heading text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             Upgrade Your
@@ -33,7 +32,7 @@ export default function HeroSection() {
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 rounded-full bg-[#FF9D36] px-7 py-3.5 text-sm font-bold text-[#171725] transition-all hover:-translate-y-1 hover:bg-white"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold !text-[#171725] transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:!text-[#171725]"
             >
               Shop Now
               <ArrowRight size={17} />
@@ -41,7 +40,7 @@ export default function HeroSection() {
 
             <Link
               href="/shop"
-              className="inline-flex items-center rounded-full border border-white/50 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#6C4CF1]"
+              className="inline-flex items-center justify-center rounded-full bg-[#6C4CF1] px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#5739DC] hover:text-white hover:-translate-y-0.5"
             >
               Explore Products
             </Link>
@@ -53,7 +52,7 @@ export default function HeroSection() {
           <div className="absolute h-64 w-64 rounded-full bg-white/15 blur-2xl" />
 
           <Image
-            src="/images/branding-image.jpg"
+            src="/images/Écosystème Apple aux reflets néon.png"
             alt="Featured NexaCart electronics"
             width={650}
             height={500}

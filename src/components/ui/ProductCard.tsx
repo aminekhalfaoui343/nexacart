@@ -1,3 +1,5 @@
+
+import Image from "next/image";
 import Link from "next/link";
 import { Star, ArrowUpRight } from "lucide-react";
 
@@ -8,27 +10,27 @@ type ProductCardProps = {
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const Icon = product.icon;
-
   return (
     <Link
       href={`/product/${product.id}`}
       className="group block overflow-hidden rounded-2xl border border-[#E9E9F1] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
-      {/* Product Image Placeholder */}
+      {/* Product Image */}
       <div
-        className={`relative flex h-56 items-center justify-center ${product.imageColor}`}
+        className={`relative h-56 overflow-hidden ${product.imageColor}`}
       >
         {product.badge && (
-          <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-[#6C4CF1] shadow-sm">
+          <span className="absolute left-4 top-4 z-10 rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-[#6C4CF1] shadow-sm">
             {product.badge}
           </span>
         )}
 
-        <Icon
-          size={100}
-          strokeWidth={1.2}
-          className="transition-transform duration-300 group-hover:scale-110"
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-contain p-5 transition-transform duration-300 group-hover:scale-110"
         />
       </div>
 
@@ -44,11 +46,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Rating */}
         <div className="mt-3 flex items-center gap-1">
-          <Star
-            size={15}
-            fill="#FF9D36"
-            className="text-[#FF9D36]"
-          />
+          <Star size={15} fill="#FF9D36" className="text-[#FF9D36]" />
 
           <span className="text-xs font-semibold text-[#171725]">
             {product.rating}

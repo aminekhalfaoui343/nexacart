@@ -1,4 +1,3 @@
-import type { LucideIcon } from "lucide-react";
 
 export type Product = {
   id: number;
@@ -9,6 +8,6 @@ export type Product = {
   rating: number;
   reviews: number;
   badge?: string;
-  icon: LucideIcon;
+  image: string;
   imageColor: string;
 };
