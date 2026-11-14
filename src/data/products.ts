@@ -1,9 +1,11 @@
+
 import type { Product } from "@/types/product";
 
 export const products: Product[] = [
   {
     id: 1,
     name: "Nova Pro 14 Laptop",
+    brand: "NovaTech",
     category: "Laptops",
     price: 1099,
     originalPrice: 1299,
@@ -12,10 +14,12 @@ export const products: Product[] = [
     badge: "Best Seller",
     image: "/images/products/nova-pro-14.webp",
     imageColor: "bg-purple-50",
+    inStock: true,
   },
   {
     id: 2,
     name: "Pulse X Smartphone",
+    brand: "Pulse",
     category: "Smartphones",
     price: 899,
     originalPrice: 999,
@@ -24,10 +28,12 @@ export const products: Product[] = [
     badge: "New Arrival",
     image: "/images/products/pulse-x.webp",
     imageColor: "bg-blue-50",
+    inStock: true,
   },
   {
     id: 3,
     name: "AirWave ANC Headphones",
+    brand: "AirWave",
     category: "Audio",
     price: 249,
     originalPrice: 299,
@@ -36,10 +42,12 @@ export const products: Product[] = [
     badge: "Popular",
     image: "/images/products/airwave-anc.webp",
     imageColor: "bg-pink-50",
+    inStock: true,
   },
   {
     id: 4,
     name: "Vortex Wireless Controller",
+    brand: "Vortex",
     category: "Gaming",
     price: 69,
     originalPrice: 89,
@@ -48,5 +56,6 @@ export const products: Product[] = [
     badge: "Sale",
     image: "/images/products/vortex-controller.webp",
     imageColor: "bg-orange-50",
+    inStock: false,
   },
 ];

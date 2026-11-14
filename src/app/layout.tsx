@@ -5,6 +5,7 @@ import ScrollAwareHeader from "@/components/layout/ScrollAwareHeader";
 
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
+import { CartProvider } from "@/components/provider/CartProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,9 +37,11 @@ export default function RootLayout({
       className={`${inter.variable} ${plusJakarta.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col">
-        <ScrollAwareHeader />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <CartProvider>
+          <ScrollAwareHeader />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
