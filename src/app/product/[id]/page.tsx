@@ -68,6 +68,8 @@ export default function ProductDetailsPage() {
     .slice(0, 3);
 
   function handleAddToCart() {
+    if (!product) return;
+
     for (let i = 0; i < quantity; i++) {
       addToCart(product);
     }
