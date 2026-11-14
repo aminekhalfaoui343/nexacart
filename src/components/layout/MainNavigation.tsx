@@ -17,12 +17,12 @@ export default function MainNavigation() {
       aria-label="Main navigation"
       className="border-b border-[#E9E9F1] bg-white"
     >
-      <div className="mx-auto flex max-w-[1440px] items-center gap-8 overflow-x-auto px-6 py-3">
+      <div className="mx-auto flex max-w-[1440px] items-center gap-6 overflow-x-auto scroll-smooth px-4 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-8 sm:px-6">
         {navigationLinks.map((link) => (
           <Link
             key={link.label}
             href={link.href}
-            className="shrink-0 text-sm font-medium text-[#77778B] transition-colors hover:text-[#6C4CF1]"
+            className="shrink-0 whitespace-nowrap text-sm font-medium text-[#77778B] transition-colors hover:text-[#6C4CF1]"
           >
             {link.label}
           </Link>

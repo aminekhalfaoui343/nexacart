@@ -37,27 +37,24 @@ export default function Header() {
 
   return (
     <header className="border-b border-[#E9E9F1] bg-white">
-      <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-4 px-6 py-5 lg:flex-row lg:gap-8">
+      <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-x-4 gap-y-4 px-4 py-4 sm:px-6 lg:flex-nowrap lg:gap-8 lg:py-5">
+
         {/* Brand */}
-        <Link href="/" className="text-2xl font-extrabold tracking-tight">
+        <Link
+          href="/"
+          className="order-1 text-xl font-extrabold tracking-tight sm:text-2xl"
+        >
           <span className="text-[#6C4CF1]">Nexa</span>
           <span className="text-[#F04D9A]">Cart</span>
         </Link>
 
-        {/* Search */}
-        <div className="w-full flex-1 lg:max-w-xl">
-          <SearchBar />
-        </div>
-
         {/* User Actions */}
-        <div className="flex shrink-0 items-center gap-6">
+        <div className="order-2 flex shrink-0 items-center gap-3 sm:gap-6 lg:order-3">
           {headerActions.map(({ label, href, icon: Icon, count }) => (
             <Link
               key={label}
               href={href}
-              aria-label={
-                count > 0 ? `${label}, ${count} items` : label
-              }
+              aria-label={count > 0 ? `${label}, ${count} items` : label}
               className="group flex flex-col items-center gap-1 text-[#77778B] transition-colors hover:text-[#6C4CF1]"
             >
               <span className="relative">
@@ -70,9 +67,16 @@ export default function Header() {
                 )}
               </span>
 
-              <span className="text-xs font-medium">{label}</span>
+              <span className="text-[11px] font-medium sm:text-xs">
+                {label}
+              </span>
             </Link>
           ))}
+        </div>
+
+        {/* Search */}
+        <div className="order-3 w-full lg:order-2 lg:flex-1 lg:max-w-xl">
+          <SearchBar />
         </div>
       </div>
     </header>
