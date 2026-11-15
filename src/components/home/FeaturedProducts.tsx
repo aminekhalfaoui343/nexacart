@@ -6,11 +6,11 @@ import ProductCard from "@/components/ui/ProductCard";
 
 export default function FeaturedProducts() {
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-6 py-16">
+    <section className="mx-auto w-full max-w-[1440px] px-4 py-10 sm:px-6 sm:py-16">
       {/* Section Header */}
-      <div className="mb-8 flex items-end justify-between">
-        <div>
-          <p className="mb-2 text-sm font-semibold text-[#6C4CF1]">
+      <div className="mb-6 flex items-end justify-between gap-4 sm:mb-8">
+        <div className="min-w-0">
+          <p className="mb-2 text-xs font-semibold text-[#6C4CF1] sm:text-sm">
             HANDPICKED FOR YOU
           </p>
 
@@ -25,7 +25,7 @@ export default function FeaturedProducts() {
 
         <Link
           href="/shop"
-          className="hidden items-center gap-2 text-sm font-semibold text-[#6C4CF1] transition-colors hover:text-[#5739DC] sm:flex"
+          className="hidden shrink-0 items-center gap-2 text-sm font-semibold text-[#6C4CF1] transition-colors hover:text-[#5739DC] sm:flex"
         >
           View All
           <ArrowRight size={17} />
@@ -33,7 +33,7 @@ export default function FeaturedProducts() {
       </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:gap-5 lg:grid-cols-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
@@ -43,7 +43,7 @@ export default function FeaturedProducts() {
       <div className="mt-6 flex justify-center sm:hidden">
         <Link
           href="/shop"
-          className="flex items-center gap-2 text-sm font-semibold text-[#6C4CF1]"
+          className="flex items-center gap-2 text-sm font-semibold text-[#6C4CF1] transition-colors hover:text-[#5739DC]"
         >
           View All Products
           <ArrowRight size={17} />
