@@ -31,34 +31,34 @@ const footerGroups = [
 export default function Footer() {
   return (
     <footer className="w-full bg-[#171725] text-white">
-      <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-10 px-6 py-10 sm:grid-cols-4 sm:gap-8">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-x-6 gap-y-10 px-4 py-10 sm:gap-x-8 sm:px-6 sm:py-12 lg:grid-cols-4 lg:gap-10 lg:px-12">
         {/* Brand */}
-        <div className="col-span-2 sm:col-span-1">
+        <div className="col-span-2 min-w-0 lg:col-span-1">
           <Link
             href="/"
-            className="text-xl font-extrabold tracking-tight"
+            className="inline-block text-xl font-extrabold tracking-tight transition-colors hover:text-[#FF9D36]"
           >
             NexaCart
           </Link>
 
-          <p className="mt-2 text-sm text-white/65">
+          <p className="mt-3 max-w-xs text-xs leading-relaxed text-white/65 sm:text-sm">
             Modern electronics, delivered.
           </p>
         </div>
 
         {/* Navigation Groups */}
         {footerGroups.map((group) => (
-          <div key={group.title}>
-            <h3 className="mb-3 text-sm font-bold text-white">
+          <div key={group.title} className="min-w-0">
+            <h3 className="mb-4 text-sm font-bold text-white">
               {group.title}
             </h3>
 
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {group.links.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-xs text-white/65 transition-colors hover:text-white"
+                    className="text-xs text-white/65 transition-colors duration-200 hover:text-white sm:text-sm"
                   >
                     {link.label}
                   </Link>
@@ -67,6 +67,15 @@ export default function Footer() {
             </ul>
           </div>
         ))}
+      </div>
+
+      {/* Copyright */}
+      <div className="border-t border-white/10">
+        <div className="mx-auto max-w-[1440px] px-4 py-5 text-center sm:px-6 lg:px-12">
+          <p className="text-[11px] text-white/45 sm:text-xs">
+            © {new Date().getFullYear()} NexaCart. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
