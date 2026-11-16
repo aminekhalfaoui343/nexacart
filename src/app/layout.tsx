@@ -1,10 +1,8 @@
+
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
-import ScrollAwareHeader from "@/components/layout/ScrollAwareHeader";
-
 import "./globals.css";
-import Footer from "@/components/layout/Footer";
 import { CartProvider } from "@/components/provider/CartProvider";
 
 const inter = Inter({
@@ -36,12 +34,8 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${plusJakarta.variable} antialiased`}
     >
-      <body className="flex min-h-screen flex-col">
-        <CartProvider>
-          <ScrollAwareHeader />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </CartProvider>
+      <body className="min-h-screen">
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );
