@@ -3,7 +3,10 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Query,
 } from "@nestjs/common";
+
+import { FindProductsQueryDto } from "./dto/find-products-query.dto.js";
 import { ProductsService } from "./products.service.js";
 
 @Controller("products")
@@ -11,8 +14,8 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Get()
-  findAll() {
-    return this.productsService.findAll();
+  findAll(@Query() query: FindProductsQueryDto) {
+    return this.productsService.findAll(query);
   }
 
   @Get("slug/:slug")

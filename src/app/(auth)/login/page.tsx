@@ -200,8 +200,8 @@ export default function LoginPage() {
               className="flex h-12 items-center justify-center gap-3 rounded-full border border-[#E2E2F0] text-sm font-semibold text-[#171725] transition hover:bg-[#F7F7FB]"
             >
               <svg
-                width="19"
-                height="19"
+                width="25"
+                height="25"
                 viewBox="0 0 48 48"
                 aria-hidden="true"
               >
@@ -234,8 +234,8 @@ export default function LoginPage() {
               className="flex h-12 items-center justify-center gap-3 rounded-full border border-[#E2E2F0] text-sm font-semibold text-[#171725] transition hover:bg-[#F7F7FB]"
             >
               <svg
-                width="19"
-                height="19"
+                width="33"
+                height="33"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
