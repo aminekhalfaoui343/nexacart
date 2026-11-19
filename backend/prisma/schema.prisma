@@ -47,3 +47,24 @@ model Product {
   @@index([categoryId])
   @@index([isActive])
 }
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  firstName    String
+  lastName     String
+  email        String   @unique
+  passwordHash String
+  phone        String?
+  role         UserRole @default(CUSTOMER)
+  isActive     Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive])
+}
