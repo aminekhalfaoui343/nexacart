@@ -1,4 +1,3 @@
-
 import {
   Controller,
   Get,
@@ -13,6 +12,8 @@ import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { UsersService } from "./users.service.js";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard/jwt-auth.guard.js";
 import { UpdateProfileDto } from "./dto/update-profile.dto/update-profile.dto.js";
+import { Post } from "@nestjs/common"; // Don't add Post; we'll use PATCH
+import { ChangePasswordDto } from "./dto/change-password.dto/change-password.dto.js";
 
 interface AuthenticatedRequest extends Request {
   user: {
@@ -46,6 +47,19 @@ export class UsersController {
     return this.usersService.updateProfile(
       request.user.userId,
       updateProfileDto,
+    );
+  }
+
+
+  @Patch("me/password")
+  changePassword(
+    @Req() request: AuthenticatedRequest,
+    @Body() changePasswordDto: ChangePasswordDto,
+  ) {
+    return this.usersService.changePassword(
+      request.user.userId,
+      changePasswordDto.currentPassword,
+      changePasswordDto.newPassword,
     );
   }
 }

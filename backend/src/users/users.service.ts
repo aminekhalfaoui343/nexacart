@@ -73,7 +73,6 @@ export class UsersService {
     });
   }
 
-
   async changePassword(
     id: number,
     currentPassword: string,
@@ -125,6 +124,5 @@ export class UsersService {
       message: "Password changed successfully",
     };
   }
-
 
 }
