@@ -8,6 +8,7 @@ import { CategoriesModule } from './categories/categories.module.js';
 import { UsersModule } from './users/users.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { CartModule } from './cart/cart.module.js';
+import { WishlistModule } from './wishlist/wishlist.module.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -27,6 +28,7 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
     UsersModule,
     AuthModule,
     CartModule,
+    WishlistModule,
   ],
   controllers: [AppController],
   providers: [AppService],
