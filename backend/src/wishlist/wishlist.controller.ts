@@ -1,7 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  Param,
+  ParseIntPipe,
   Post,
   Req,
   UseGuards,
@@ -45,6 +48,17 @@ export class WishlistController {
         return this.wishlistService.addItem(
             request.user.userId,
             dto,
+        );
+    }
+
+    @Delete("items/:itemId")
+    removeItem(
+        @Req() request: AuthenticatedRequest,
+        @Param("itemId", ParseIntPipe) itemId: number,
+        ) {
+        return this.wishlistService.removeItem(
+            request.user.userId,
+            itemId,
         );
     }
 }
