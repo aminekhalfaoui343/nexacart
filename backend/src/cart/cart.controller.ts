@@ -73,4 +73,9 @@ export class CartController {
     );
   }
 
+  @Delete()
+  clearCart(@Req() request: AuthenticatedRequest) {
+    return this.cartService.clearCart(request.user.userId);
+  }
+
 }
