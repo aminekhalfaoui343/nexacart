@@ -107,4 +107,26 @@ export class WishlistService {
 
         return this.getWishlist(userId);
     }
+
+    async clearWishlist(userId: number) {
+        const wishlist = await this.prisma.wishlist.findUnique({
+            where: { userId },
+        });
+
+        if (!wishlist) {
+            return {
+            message: "Wishlist is already empty",
+            items: [],
+            totalItems: 0,
+            };
+        }
+
+        await this.prisma.wishlistItem.deleteMany({
+            where: {
+            wishlistId: wishlist.id,
+            },
+        });
+
+        return this.getWishlist(userId);
+    }
 }

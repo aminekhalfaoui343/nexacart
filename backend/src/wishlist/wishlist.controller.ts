@@ -33,32 +33,39 @@ export class WishlistController {
     private readonly wishlistService: WishlistService,
   ) {}
 
-    @Get()
-    getWishlist(@Req() request: AuthenticatedRequest) {
-    return this.wishlistService.getWishlist(
-        request.user.userId,
+  @Get()
+  getWishlist(@Req() request: AuthenticatedRequest) {
+  return this.wishlistService.getWishlist(
+      request.user.userId,
+  );
+  }
+
+  @Post("items")
+  addItem(
+      @Req() request: AuthenticatedRequest,
+      @Body() dto: AddToWishlistDto,
+      ) {
+      return this.wishlistService.addItem(
+          request.user.userId,
+          dto,
+      );
+  }
+
+  @Delete("items/:itemId")
+  removeItem(
+      @Req() request: AuthenticatedRequest,
+      @Param("itemId", ParseIntPipe) itemId: number,
+      ) {
+      return this.wishlistService.removeItem(
+          request.user.userId,
+          itemId,
+      );
+  }
+
+  @Delete()
+  clearWishlist(@Req() request: AuthenticatedRequest) {
+    return this.wishlistService.clearWishlist(
+      request.user.userId,
     );
-    }
-
-    @Post("items")
-    addItem(
-        @Req() request: AuthenticatedRequest,
-        @Body() dto: AddToWishlistDto,
-        ) {
-        return this.wishlistService.addItem(
-            request.user.userId,
-            dto,
-        );
-    }
-
-    @Delete("items/:itemId")
-    removeItem(
-        @Req() request: AuthenticatedRequest,
-        @Param("itemId", ParseIntPipe) itemId: number,
-        ) {
-        return this.wishlistService.removeItem(
-            request.user.userId,
-            itemId,
-        );
-    }
+  }
 }
