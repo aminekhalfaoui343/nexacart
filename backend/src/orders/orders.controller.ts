@@ -5,6 +5,7 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Patch,
   Query,
   Req,
   UseGuards,
@@ -65,6 +66,17 @@ export class OrdersController {
     @Param("id", ParseIntPipe) id: number,
   ) {
     return this.ordersService.findMyOrderById(
+      request.user.userId,
+      id,
+    );
+  }
+
+  @Patch(":id/cancel")
+  cancelOrder(
+    @Req() request: AuthenticatedRequest,
+    @Param("id", ParseIntPipe) id: number,
+  ) {
+    return this.ordersService.cancelOrder(
       request.user.userId,
       id,
     );

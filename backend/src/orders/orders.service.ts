@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Injectable,
   NotFoundException,
+  ForbiddenException
 } from "@nestjs/common";
 import { randomUUID } from "node:crypto";
 
@@ -205,5 +206,88 @@ export class OrdersService {
     }
 
     return order;
+  }
+
+  async cancelOrder(userId: number, orderId: number) {
+    return this.prisma.$transaction(async (tx) => {
+      // 1. Find the customer's order
+      const order = await tx.order.findFirst({
+        where: {
+          id: orderId,
+          userId,
+        },
+        include: {
+          items: true,
+        },
+      });
+
+      if (!order) {
+        throw new NotFoundException("Order not found");
+      }
+
+      // 2. Check whether cancellation is allowed
+      if (
+        order.status !== "PENDING" &&
+        order.status !== "CONFIRMED"
+      ) {
+        throw new BadRequestException(
+          "This order cannot be cancelled",
+        );
+      }
+
+      // 3. Prevent cancellation of already-paid orders
+      if (order.paymentStatus !== "PENDING") {
+        throw new BadRequestException(
+          "This order cannot be cancelled because its payment is not pending",
+        );
+      }
+
+      // 4. Update status only if the order is still cancellable
+      const result = await tx.order.updateMany({
+        where: {
+          id: orderId,
+          userId,
+          status: {
+            in: ["PENDING", "CONFIRMED"],
+          },
+          paymentStatus: "PENDING",
+        },
+        data: {
+          status: "CANCELLED",
+        },
+      });
+
+      if (result.count !== 1) {
+        throw new BadRequestException(
+          "This order can no longer be cancelled",
+        );
+      }
+
+      // 5. Restore stock for each purchased product
+      for (const item of order.items) {
+        if (item.productId !== null) {
+          await tx.product.update({
+            where: {
+              id: item.productId,
+            },
+            data: {
+              stock: {
+                increment: item.quantity,
+              },
+            },
+          });
+        }
+      }
+
+      // 6. Return the updated order
+      return tx.order.findUnique({
+        where: {
+          id: orderId,
+        },
+        include: {
+          items: true,
+        },
+      });
+    });
   }
 }
