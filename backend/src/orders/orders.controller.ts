@@ -1,11 +1,13 @@
 import {
   Body,
   Controller,
+  Get,
   Post,
+  Query,
   Req,
   UseGuards,
 } from "@nestjs/common";
-
+import { FindOrdersQueryDto } from "./dto/find-orders-query.dto/find-orders-query.dto.js";
 import type { Request } from "express";
 import {
   ApiBearerAuth,
@@ -41,6 +43,17 @@ export class OrdersController {
     return this.ordersService.createOrder(
       request.user.userId,
       dto,
+    );
+  }
+
+  @Get()
+  findMyOrders(
+    @Req() request: AuthenticatedRequest,
+    @Query() query: FindOrdersQueryDto,
+    ) {
+    return this.ordersService.findMyOrders(
+        request.user.userId,
+        query,
     );
   }
 }

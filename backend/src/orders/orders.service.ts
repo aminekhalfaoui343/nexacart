@@ -6,6 +6,7 @@ import { randomUUID } from "node:crypto";
 
 import { PrismaService } from "../prisma/prisma.service.js";
 import { CreateOrderDto } from "./dto/create-order.dto/create-order.dto.js";
+import { FindOrdersQueryDto } from "./dto/find-orders-query.dto/find-orders-query.dto.js";
 
 @Injectable()
 export class OrdersService {
@@ -146,5 +147,44 @@ export class OrdersService {
 
       return order;
     });
+  }
+
+  async findMyOrders(
+    userId: number,
+    query: FindOrdersQueryDto,
+    ) {
+        const page = query.page ?? 1;
+        const limit = query.limit ?? 10;
+        const skip = (page - 1) * limit;
+
+        const [orders, total] = await this.prisma.$transaction([
+            this.prisma.order.findMany({
+                where: { userId },
+                include: {
+                    items: true,
+            },
+            orderBy: {
+                createdAt: "desc",
+            },
+                skip,
+                take: limit,
+            }),
+
+                this.prisma.order.count({
+                where: { userId },
+            }),
+        ]);
+
+        return {
+            data: orders,
+            meta: {
+            total,
+            page,
+            limit,
+            totalPages: Math.ceil(total / limit),
+            hasNextPage: page * limit < total,
+            hasPreviousPage: page > 1,
+            },
+        };
   }
 }
