@@ -2,6 +2,8 @@ import {
   Body,
   Controller,
   Get,
+  Param,
+  ParseIntPipe,
   Post,
   Query,
   Req,
@@ -54,6 +56,17 @@ export class OrdersController {
     return this.ordersService.findMyOrders(
         request.user.userId,
         query,
+    );
+  }
+
+  @Get(":id")
+  findMyOrderById(
+    @Req() request: AuthenticatedRequest,
+    @Param("id", ParseIntPipe) id: number,
+  ) {
+    return this.ordersService.findMyOrderById(
+      request.user.userId,
+      id,
     );
   }
 }

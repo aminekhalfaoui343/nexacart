@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Injectable,
+  NotFoundException,
 } from "@nestjs/common";
 import { randomUUID } from "node:crypto";
 
@@ -186,5 +187,23 @@ export class OrdersService {
             hasPreviousPage: page > 1,
             },
         };
+  }
+
+  async findMyOrderById(userId: number, orderId: number) {
+    const order = await this.prisma.order.findFirst({
+      where: {
+        id: orderId,
+        userId,
+      },
+      include: {
+        items: true,
+      },
+    });
+
+    if (!order) {
+      throw new NotFoundException("Order not found");
+    }
+
+    return order;
   }
 }
